@@ -78,3 +78,28 @@ input[type="checkbox"]{
     margin-left: 15px;
 
 }
+
+
+.footer{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.section2 li{
+  list-style: none;
+}
+
+.section2 ul{
+  display: flex;
+  flex-direction: row;
+  gap: 9px;
+}
+
+.section3 li{
+  list-style: none;
+}
+
+.section1{
+  color: white;
+}
