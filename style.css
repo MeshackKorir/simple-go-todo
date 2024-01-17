@@ -25,7 +25,6 @@
 
 .todomain{
     width: 60vw;
-    background-color: red;
     max-width: 500px;
 }
 
@@ -59,4 +58,23 @@ input[type="checkbox"]{
     padding: 5px;
     margin-left: 10px;
     width: 100%;
+    color: white;
+}
+
+.todos{
+    background-color:rgb(3, 0, 12) ;
+    margin-top: 30px;
+}
+
+.todo{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: white;
+    border-bottom: 0.5px solid gray;
+}
+
+.todo > div{
+    margin-left: 15px;
+
 }
