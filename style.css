@@ -84,10 +84,12 @@ input[type="checkbox"]{
   display: flex;
   justify-content: space-around;
   flex-direction: row;
+  background-color: rgb(216, 201, 201);
 }
 
 .section2 li{
   list-style: none;
+  color: rgb(91, 86, 86);
 }
 
 .section2 ul{
@@ -100,6 +102,10 @@ input[type="checkbox"]{
   list-style: none;
 }
 
+#Add1{
+  color: rgb(91, 86, 86);
+}
+
 .section1{
-  color: white;
+  color: rgb(63, 61, 61);
 }

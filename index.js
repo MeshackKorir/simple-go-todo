@@ -1,5 +1,6 @@
 let todosContainer = document.querySelector('.todos')
 
+
 let todos = []
 
 let todoform = document.querySelector('#todoform')
@@ -22,11 +23,20 @@ todoform.addEventListener("submit", (e)=>{
         localStorage.setItem('todos', JSON.stringify(todos))
 
         displayTodos()
+        // display items 
+        const itemCount = document.createElement("div")
+        itemCount.textContent = todos.length + " items left";
+        const sector1Elements = document.querySelector(".section1");
+        sector1Elements.innerHTML = '';  
+        sector1Elements.appendChild(itemCount);
+
     }
 })
 
 // Display todos
 let displayTodos = function(){
+
+    
 
     let taskItems = localStorage.getItem("todos")
 
@@ -60,4 +70,10 @@ let displayTodos = function(){
 
 displayTodos()
 
+
+// Count Items left
+
+
+
+// itemCount.innerText = sector1Elements.length;
 
