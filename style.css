@@ -84,7 +84,7 @@ input[type="checkbox"]{
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  background-color: rgb(216, 201, 201);
+  background-color: rgb(114, 112, 112);
 }
 
 .section2 li{
@@ -95,7 +95,7 @@ input[type="checkbox"]{
 .section2 ul{
   display: flex;
   flex-direction: row;
-  gap: 9px;
+  gap: 20px;
 }
 
 .section3 li{

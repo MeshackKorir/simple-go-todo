@@ -68,12 +68,19 @@ let displayTodos = function(){
     })
 }
 
-displayTodos()
+displayTodos();
+
+// display all todos
+
+let allItemsButton = document.getElementById("AllItems");
+allItemsButton.addEventListener("click", function() {
+    displayTodos();
+})
 
 
-// Count Items left
 
 
 
-// itemCount.innerText = sector1Elements.length;
+
+
 
