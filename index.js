@@ -1,11 +1,11 @@
 let todosContainer = document.querySelector('.todos')
 
-
 let todos = []
 
 let todoform = document.querySelector('#todoform')
 let newtodo = document.getElementById("createtodo")
 let checkedstatus = document.querySelector(".checkbox")
+let btnClear = document.getElementById("Complition")
 
 todoform.addEventListener("submit", (e)=>{
     e.preventDefault()
@@ -23,6 +23,7 @@ todoform.addEventListener("submit", (e)=>{
         localStorage.setItem('todos', JSON.stringify(todos))
 
         displayTodos()
+
         // display items 
         const itemCount = document.createElement("div")
         itemCount.textContent = todos.length + " items left";
@@ -70,12 +71,36 @@ let displayTodos = function(){
 
 displayTodos();
 
-// display all todos
+// display all todos when all button is clicked
 
 let allItemsButton = document.getElementById("AllItems");
 allItemsButton.addEventListener("click", function() {
     displayTodos();
 })
+
+// Clearing all the completed tasks
+
+
+btnClear.addEventListener("click", () => {
+    const toRemove = todos.filter((obj) => obj.active === false);
+
+    if (toRemove.length > 0 && confirm(`You are about to remove ${toRemove.length} completed task. Are you sure?`)){
+        toRemove.forEach((el) => {
+            removeEl(el.DOMele);
+        });
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
 
 
 
