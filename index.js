@@ -122,3 +122,39 @@ clearCompletedButton.addEventListener("click", () => {
         displayTodos();
     }
 })
+
+// Completed button
+
+
+
+btnClear.addEventListener("click" , function() 
+{
+    let taskItems = localStorage.getItem("todos")
+
+    taskItems = JSON.parse(taskItems)
+    todosContainer.textContent = "";
+    taskItems.forEach((task, i) => {
+        if (task.status) {
+            let todo = document.createElement('div')
+        todo.className = "todo"
+
+        let checkbox = document.createElement("input")
+        checkbox.type = "checkbox"
+        checkbox.className ="checkbox"
+        checkbox.checked = task.status
+
+        let taskname = document.createElement('div')
+        taskname.textContent = task.taskname
+
+        todo.appendChild(checkbox)
+        todo.appendChild(taskname)
+
+        todosContainer.appendChild(todo)
+        }
+    })
+
+}) 
+  activeItemsButton.addEventListener("click", function() {
+    displayActiveTodos();
+})
+
