@@ -7,6 +7,8 @@ let newtodo = document.getElementById("createtodo")
 let checkedstatus = document.querySelector(".checkbox")
 let btnClear = document.getElementById("Complition")
 let clearCompletedButton = document.getElementById("clearCompleted")
+let activeItemsButton = document.getElementById("Activenss")
+
 
 todoform.addEventListener("submit", (e)=>{
     e.preventDefault()
@@ -31,7 +33,6 @@ todoform.addEventListener("submit", (e)=>{
         const sector1Elements = document.querySelector(".section1");
         sector1Elements.innerHTML = '';  
         sector1Elements.appendChild(itemCount);
-
     }
 })
 
@@ -66,31 +67,58 @@ let displayTodos = function(){
     })
 }
 
-// Display all todos when "All" button is clicked
+
+    // Active button
+let displayActiveTodos = function() {
+    let taskItems = localStorage.getItem("todos")
+
+    taskItems = JSON.parse(taskItems)
+    todosContainer.textContent = "";
+    taskItems.forEach((task, i) => {
+        if (!task.status) {
+            let todo = document.createElement('div')
+        todo.className = "todo"
+
+        let checkbox = document.createElement("input")
+        checkbox.type = "checkbox"
+        checkbox.className ="checkbox"
+        checkbox.checked = task.status
+
+        let taskname = document.createElement('div')
+        taskname.textContent = task.taskname
+
+        todo.appendChild(checkbox)
+        todo.appendChild(taskname)
+
+        todosContainer.appendChild(todo)
+        }
+    })
+
+}
+  activeItemsButton.addEventListener("click", function() {
+    displayActiveTodos();
+})
+
+    // All button
 let allItemsButton = document.getElementById("AllItems");
 allItemsButton.addEventListener("click", function() {
     displayTodos();
 })
 
-// Display active todos when "Active" button is clicked
-let activeItemsButton = document.getElementById("Activenss");
-activeItemsButton.addEventListener("click", function() {
-    displayActiveTodos();
-})
-
-// Clear completed todos when "Clear Completed" button is clicked
+    // Clear Completed button
+    
 clearCompletedButton.addEventListener("click", () => {
     const toRemove = todos.filter((obj) => obj.status === true);
 
     if (toRemove.length > 0 && confirm(`You are about to remove ${toRemove.length} completed task. Are you sure?`)){
+        
         toRemove.forEach((el) => {
-            // Remove from todos array
+
             todos.splice(todos.indexOf(el), 1);
             // Update localStorage
             localStorage.setItem('todos', JSON.stringify(todos));
         });
 
-        // Display updated todos
         displayTodos();
     }
 })
