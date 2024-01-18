@@ -6,6 +6,7 @@ let todoform = document.querySelector('#todoform')
 let newtodo = document.getElementById("createtodo")
 let checkedstatus = document.querySelector(".checkbox")
 let btnClear = document.getElementById("Complition")
+let clearCompletedButton = document.getElementById("clearCompleted")
 
 todoform.addEventListener("submit", (e)=>{
     e.preventDefault()
@@ -36,9 +37,6 @@ todoform.addEventListener("submit", (e)=>{
 
 // Display todos
 let displayTodos = function(){
-
-    
-
     let taskItems = localStorage.getItem("todos")
 
     taskItems = JSON.parse(taskItems)
@@ -48,7 +46,6 @@ let displayTodos = function(){
     tasks.forEach(el=>{
         el.remove()
     })
-
 
     taskItems.forEach((el, index)=>{
         let todo = document.createElement('div')
@@ -69,43 +66,31 @@ let displayTodos = function(){
     })
 }
 
-displayTodos();
-
-// display all todos when all button is clicked
-
+// Display all todos when "All" button is clicked
 let allItemsButton = document.getElementById("AllItems");
 allItemsButton.addEventListener("click", function() {
     displayTodos();
 })
 
-// Clearing all the completed tasks
+// Display active todos when "Active" button is clicked
+let activeItemsButton = document.getElementById("Activenss");
+activeItemsButton.addEventListener("click", function() {
+    displayActiveTodos();
+})
 
-
-btnClear.addEventListener("click", () => {
-    const toRemove = todos.filter((obj) => obj.active === false);
+// Clear completed todos when "Clear Completed" button is clicked
+clearCompletedButton.addEventListener("click", () => {
+    const toRemove = todos.filter((obj) => obj.status === true);
 
     if (toRemove.length > 0 && confirm(`You are about to remove ${toRemove.length} completed task. Are you sure?`)){
         toRemove.forEach((el) => {
-            removeEl(el.DOMele);
+            // Remove from todos array
+            todos.splice(todos.indexOf(el), 1);
+            // Update localStorage
+            localStorage.setItem('todos', JSON.stringify(todos));
         });
+
+        // Display updated todos
+        displayTodos();
     }
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
